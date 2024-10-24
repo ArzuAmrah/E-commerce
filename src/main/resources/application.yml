@@ -10,3 +10,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+      # Liquibase
+  liquibase:
+    change-log: classpath:db.changelog/changelog-master.yaml

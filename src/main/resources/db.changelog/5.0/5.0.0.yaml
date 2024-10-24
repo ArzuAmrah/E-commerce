@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create_user_table
+      author: Arzu Amrahova
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_role
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: img
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false

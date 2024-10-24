@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create_category_table
+      author: Arzu Amrahova
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false

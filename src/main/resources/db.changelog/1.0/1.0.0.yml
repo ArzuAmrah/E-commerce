@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create_cart_items_table
+      author: Arzu Amrahova
+      changes:
+        - createTable:
+            tableName: cart_items
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: price
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: bigint
+                  constraints:
+                    nullable: false

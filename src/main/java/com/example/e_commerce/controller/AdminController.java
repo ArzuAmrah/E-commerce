@@ -1,6 +1,7 @@
 package com.example.e_commerce.controller;
 
 import com.example.e_commerce.dto.CategoryDto;
+import com.example.e_commerce.dto.OrderDto;
 import com.example.e_commerce.dto.ProductDto;
 import com.example.e_commerce.entities.CategoryEntity;
 import com.example.e_commerce.entities.ProductEntity;
@@ -67,4 +68,12 @@ public class AdminController {
         if(updateProduct == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something went wrong");
         return ResponseEntity.ok(updateProduct);
     }
+
+
+    @GetMapping("/orders")
+    public  ResponseEntity<List<OrderDto>> getAllOrders(){
+        List<OrderDto> orderDtoList = adminService.getAllOrders();
+        return  ResponseEntity.ok(orderDtoList);
+    }
+
 }

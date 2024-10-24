@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create_product_table
+      author: Arzu Amrahova
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false

@@ -58,18 +58,7 @@ public class AuthhenticationController {
         );
         final String jwt = jwtUtil.generateToken(authenticationRequest.getUsername());
 
-
-
-
-//        return new AuthenticationResponse(jwt);
-
         response.getWriter().write(new JSONPObject(TOKEN_PREFIX + jwt, userDetails).toString());
-
-//        response.getWriter().write(new JSONPObject()
-//                .put("userId", user.getId())
-//                .put("role", user.getUserRole())
-//                .toString()
-//        );
 
         response.addHeader("Access Control-Expose-Headers", "Authorization");
         response.addHeader("Access-Control-Allow-Headers", "Authorization,X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header");

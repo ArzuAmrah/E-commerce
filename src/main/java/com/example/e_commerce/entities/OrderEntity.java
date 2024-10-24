@@ -1,10 +1,9 @@
 package com.example.e_commerce.entities;
 
-
+import com.example.e_commerce.dto.OrderDto;
 import com.example.e_commerce.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
 import java.util.List;
 
@@ -36,5 +35,18 @@ public class OrderEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
     private List<CartItems> cartItems;
 
+    public OrderDto getOrderDto() {
+        OrderDto orderDto = new OrderDto();
+        orderDto.setId(id);
+        orderDto.setOrderStatus(orderStatus);
+        orderDto.setAmount(price);
+        orderDto.setAddress(address);
+        orderDto.setPaymentType(paymentType);
+        orderDto.setUsername(user.getName());
+        orderDto.setDate(date);
+        orderDto.setOrderDescription(description);
+
+        return orderDto;
+    };
 
 }

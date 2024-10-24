@@ -1,10 +1,14 @@
 package com.example.e_commerce.service.admin;
 
 import com.example.e_commerce.dto.CategoryDto;
+import com.example.e_commerce.dto.OrderDto;
 import com.example.e_commerce.dto.ProductDto;
 import com.example.e_commerce.entities.CategoryEntity;
+import com.example.e_commerce.entities.OrderEntity;
 import com.example.e_commerce.entities.ProductEntity;
+import com.example.e_commerce.enums.OrderStatus;
 import com.example.e_commerce.repository.CategoryRepository;
+import com.example.e_commerce.repository.OrderRepository;
 import com.example.e_commerce.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +25,8 @@ public class AdminServiceImpl implements AdminService {
     private CategoryRepository categoryRepository;
 
     private ProductRepository productRepository;
+
+    private OrderRepository orderRepository;
 
     @Override
     public CategoryEntity createdCategory(CategoryDto categoryDto) {
@@ -76,11 +82,6 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
-//    @Override
-//    public ProductDto updateProduct(Long id) {
-//
-//    }
-
     @Override
     public ProductDto updateProduct(Long categoryId, Long productId, ProductDto productDto) throws IOException {
         Optional<CategoryEntity> optionalCategory = categoryRepository.findById(categoryId);
@@ -99,5 +100,10 @@ public class AdminServiceImpl implements AdminService {
              return updateProductDto;
         }
         return null;
+    }
+
+    @Override
+    public List<OrderDto> getAllOrders() {
+        return orderRepository.findAllByOrderStatus(OrderStatus.SUBMITTED).stream().map(OrderEntity::getOrderDto).collect(Collectors.toList());
     }
 }

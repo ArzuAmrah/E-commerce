@@ -14,22 +14,25 @@ public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
     private Long id;
 
+    @Column(name = "product_name", nullable = false, length = 100)
     private String name;
 
     @Lob
+    @Column(name = "product_description", nullable = true)
     private String description;
 
+    @Column(name = "price", nullable = false)
     private Integer price;
 
-//    @Column(columnDefinition = "longlob")
-    @Column(columnDefinition = "BYTEA")
+    @Lob
+    @Column(name = "product_image", columnDefinition = "BYTEA")
     private byte[] image;
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private CategoryEntity category;
@@ -44,7 +47,5 @@ public class ProductEntity {
         productDto.setCategoryId(category.getId());
         productDto.setCategoryName(category.getName());
         return productDto;
-
     }
-
 }
